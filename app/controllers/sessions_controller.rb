@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ], raise: false
 
-
   def index
-    @sessions = Session.all.order(name: :asc)
+    @sessions = Session.all
   end
 
   def show
@@ -26,10 +25,9 @@ class SessionsController < ApplicationController
     end
   end
 
-private
+  private
 
   def session_params
-    params.require(:session).permit(:name)
+    params.require(:session).permit(:name, :tipo, :description, :location, :date)
   end
-
 end
