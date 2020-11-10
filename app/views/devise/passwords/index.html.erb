@@ -1,0 +1,13 @@
+<h1> 🏋🏻‍♂️ Here our Classes! 💪🏻🤸🏻‍♀️ </h1>
+
+<%# <%= link_to new_session_path, class: 'btn btn-outline-primary' do %> %>
+  <%# <i class="fa fa-plus"></i> Add new session %>
+<%# <% end  %> %>
+<ul> 
+  <% @sessions.each do |session| %>
+  <li> 
+    <%= link_to session.name, session_path(session) %>
+   </li>
+  <% end %>
+</ul>
+    
