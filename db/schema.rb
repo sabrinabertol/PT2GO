@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_124946) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "name"
-    t.string "tipo"
+    t.string "type"
     t.string "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
