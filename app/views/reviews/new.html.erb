@@ -1,0 +1,13 @@
+
+<h1>Add review</h1>
+
+<%= simple_form_for [@session, @review] do |f| %>
+<div class="form-inputs">
+  <%= f.input :description %>
+  <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+  <%= b.radio_button + b.label {''} %>
+  <% end %>
+
+  <%= f.submit %>
+</div>
+<% end %>

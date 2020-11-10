@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.session = @session
-
     if @review.save
       redirect_to session_path(@session) notice: 'Your review was added'
     else
