@@ -1,6 +1,6 @@
 <h1>Bookings</h1>
 
 <%= simple_form_for [@session, @booking] do |f| %>
-    <%= f.input :name %>
+    <%= f.association :session, label_method: :name, value_method: :id, include_blank: false %>
     <%= f.submit %>
 <% end %>
