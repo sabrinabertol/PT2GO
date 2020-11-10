@@ -1,0 +1,22 @@
+
+<h1>Add review</h1>
+
+<% if @review.errors.any? %>
+  <div class="alert alert-danger">
+    <h3>You have errors mate! Please solve these problems:</h3>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    <ul>
+  </div>
+<% end %>
+
+<%= simple_form_for [@session, @review] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.input :rating %>
+
+    <%= f.submit %>
+  </div>
+<% end %>
