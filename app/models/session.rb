@@ -1,5 +1,5 @@
 class Session < ApplicationRecord
-  TIPO = %w[ HIIT Strength Weigh_loss Fitness ]
+  TIPO = %w[HIIT Strength Weigh_loss Fitness]
 
   belongs_to :user
 
@@ -7,5 +7,4 @@ class Session < ApplicationRecord
   has_many :reviews
 
   validates :name, presence: true
-
 end
