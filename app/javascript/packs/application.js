@@ -24,7 +24,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { navbarCollapse, $ };
 
 
 // Internal imports, e.g:
@@ -33,6 +32,4 @@ import { navbarCollapse, $ };
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  navbarCollapse();
-  $();
 });
