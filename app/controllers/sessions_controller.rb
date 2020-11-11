@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ], raise: false
 
   def index
-    @sessions = Session.all
+    @sessions = Session.all.order(created_at: :asc)
   end
 
   def show
