@@ -3,8 +3,10 @@
 <%= simple_form_for [@session] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :type, collection: Session::TIPO %>
+    <%= f.input :tipo, collection: Session::TIPO %>
     <%= f.input :location %>
     <%= f.input :date %>
     <%= f.submit %>
 <% end %>
+
+

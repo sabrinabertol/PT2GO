@@ -7,9 +7,7 @@ before_action :set_session, except: [:destroy]
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.session = @session
     @booking.user = current_user
-    raise
     if @booking.save
       redirect_to session_path(@session), notice: 'Your booking was created!'
     else
@@ -26,7 +24,7 @@ before_action :set_session, except: [:destroy]
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :session_id)
+    params.permit(:session_id)
   end
 
   def set_session
