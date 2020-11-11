@@ -1,6 +1,6 @@
 <h1>Create a Class</h1>
 
-<%= simple_form_for [@session] do |f| %>
+<%= simple_form_for @session do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :tipo, collection: Session::TIPO %>

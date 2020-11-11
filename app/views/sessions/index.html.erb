@@ -1,18 +1,30 @@
-<h1> 🏋🏻‍♂️ Here are our Classes! 💪🏻🤸🏻‍♀️ </h1>
-
-<ul>
-  <% @sessions.each do |session| %>
-  <li>
-    <%= link_to session.name, session_path(session) %>
-   </li>
-  <% end %>
-</ul>
-
-<%# <%= link_to new_session_path, class: 'btn btn-outline-primary' do %>
-  <%# <i class="fa fa-plus"></i> Add new session %>
-<%# <% end  %>
+<div class="container text-center"> 
+  <h1> 🏋🏻‍♂️ Here are our Classes! 💪🏻🤸🏻‍♀️ </h1>
+</div>
 
 
-  <%= link_to new_session_path do %>
-  <p>Add a new session!</p>
-<% end %>
+<div class="container text-center">
+  <ul id="list-inline">
+    <% @sessions.each do |session| %>
+    <li>
+      <%= link_to session.name, session_path(session) %> 
+    </li>
+    <% end %>
+  </ul>
+
+      <% if !current_user.nil? && current_user.pt %>
+        <%= link_to new_session_path do %>
+      <button type="button" class="btn btn-success center">Add your class!</button>
+        <% end %>
+      <% end %>
+</div>
+
+
+
+<%# <div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    Breakfast
+  </div> %>
+
+
+
