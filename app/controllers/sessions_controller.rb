@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(session_params)
+    @session.user = current_user
 
     if @session.save
       redirect_to session_path(@session), notice: "The session <strong>#{@session.name}</strong> was created successfully!"
