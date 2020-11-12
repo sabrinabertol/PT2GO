@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:name, :tipo, :description, :location, :date)
+    params.require(:session).permit(:name, :tipo, :description, :location, :date, :photo)
   end
 end
