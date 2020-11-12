@@ -1,49 +1,62 @@
 
 <div class="container">
-  <div class="text-center m-5">
-    <h1><%= @session.name %></h1>
-  </div>
 
+<div class="row justify-content-center m-5">
 
-  <section class="projects-section bg-light" id="projects">
-   <div class="row justify-content-center no-gutters h-100">
-     <div class="col-lg-6"><img class="img-fluid" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" /></div>
-     <div class="col-lg-6 order-lg-first">
-       <div class="bg-black text-center h-100 project">
-         <div class="d-flex h-100">
-           <div class="project-text w-100 my-auto text-center text-lg-right">
-             <h3><%= @session.name %></h3>
-             <p><%= @session.location %> - <%= @session.date %></p>
-             <p><%= @session.description %></p>
-             <% if user_signed_in? %>
-              <%= render 'bookings/new' %>
-             <% end %>
-             <hr class="d-none d-lg-block mb-0 mr-0">
-           </div>
-         </div>
-       </div>
-     </div>
-   </div> 
-  </section>
-
-  <div class="row">
-    <div class="col-3">
-    </div>
-      <div class="col-6 ">
-      <div class="m-5">
-        <p class="text-center"> <strong>Have you been to this class before? Leave a review!</strong></p>
-        <%= render 'reviews/new' %>
+  <div class="card-product">
+    <% if @session.photo.attached?%>
+      <%= cl_image_tag @session.photo.key%>
+    <% else %>
+      <%= cl_image_tag "https://res.cloudinary.com/dyndl1bic/image/upload/v1605194054/full-logo-03_qj0t4l.jpg" %>
+    <% end %>
+    <div class="card-product-infos ml-3">
+      <h3><%= @session.name %></h3>
+      <p style="font-size: 16px;"><%= @session.location %> - <%= @session.date %></p>
+      <p><%= @session.description %></p>
+      <% if user_signed_in? %>
+      <div class="mt-5">
+        <%= render 'bookings/new' %>
       </div>
-      <div class="mt-5 text-center">
-      <%= link_to sessions_path do %>
-      Back to list
+      <% else  %>
+      <p>Sign in to save your spot!</p>
       <% end %>
-      </div>
-      <div class="col-3">
-      </div>
     </div>
   </div>
 
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-6 m-5">
+    <p><strong>Who's attending?</strong></p>
+      <div class="d-flex space-around">
+        <% @attending.each do |user| %>
+            <% if user.photo.attached?  %>
+              <%= cl_image_tag user.photo.key, :class => "avatar" %>
+            <% else  %>
+              <%= cl_image_tag "logo-avatar2-02_kqleye.jpg", :class => "avatar" %>
+              <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                <%= user.name  %>
+              </button>
+            <% end  %>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+
+  <div class="row justify-content-center">
+    <div class="col-6 m-5">
+        <%= render 'reviews/new' %>
+     <div class="text-center m-5">
+       <%= link_to sessions_path do %>
+       Back to list
+       <% end %>
+     </div>
+   </div>
+  </div>
+
+ 
 </div>
  <div id="map"
    style="width: 600px; height: 600px;"
@@ -51,6 +64,7 @@
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 </div>
+
 
 
 

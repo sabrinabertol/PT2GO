@@ -19,6 +19,9 @@ class SessionsController < ApplicationController
     @review = Review.new
     @booking = Booking.new
 
+    @attending = @session.users
+
+
     @markers =
       [{
         lat: @session.latitude,
