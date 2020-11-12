@@ -1,14 +1,14 @@
 <div class="container">
 
-  <h1 class="text-center"> 🏋🏻‍♂️ Here are our Classes! 💪🏻🤸🏻‍♀️ </h1>
+  <h1 class="text-center mb-3"> 🏋🏻‍♂️ Here are our Classes! 💪🏻🤸🏻‍♀️ </h1>
 
   <div class="container-fluid">
      <% if !current_user.nil? && current_user.pt %>
     <%= link_to new_session_path do %>
-  <button type="button" class="btn btn-success center">Add your class!</button>
+  <button type="button" class="btn btn-success center">Add your class</button>
     <% end %>
   <% end %>
-    <div class="row">
+    <div class="row mt-3">
       <% @sessions.each do |session| %>
         <div class="col-sm p-3">
           <div class="card" style="width: 18rem;">
