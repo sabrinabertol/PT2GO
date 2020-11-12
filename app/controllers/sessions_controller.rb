@@ -3,12 +3,20 @@ class SessionsController < ApplicationController
 
   def index
     @sessions = Session.all.order(created_at: :asc)
+
+
   end
 
   def show
     @session = Session.find(params[:id])
     @review = Review.new
     @booking = Booking.new
+
+    @markers =
+      [{
+        lat: @session.latitude,
+        lng: @session.longitude
+      }]
   end
 
   def new
