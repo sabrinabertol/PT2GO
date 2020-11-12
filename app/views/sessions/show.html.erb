@@ -15,7 +15,9 @@
              <h3><%= @session.name %></h3>
              <p><%= @session.location %> - <%= @session.date %></p>
              <p><%= @session.description %></p>
-             <%= render 'bookings/new' %>
+             <% if user_signed_in? %>
+              <%= render 'bookings/new' %>
+             <% end %>
              <hr class="d-none d-lg-block mb-0 mr-0">
            </div>
          </div>
@@ -30,8 +32,11 @@
   </div>
   <div class="col-6 ">
    <div class="m-5">
-    <p class="text-center"> <strong>Have you been to this class before? Leave a review!</strong></p>
-    <%= render 'reviews/new' %>
+     <% if !user_signed_in? %>
+        <p class="text-center"> <strong>You must be logged in to leave a review</strong></p>
+     <% else %>
+        <%= render 'reviews/new' %>
+     <% end %>
   </div>
   <div class="mt-5 text-center">
    <%= link_to sessions_path do %>

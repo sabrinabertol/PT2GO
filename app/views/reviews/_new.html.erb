@@ -1,12 +1,14 @@
 
 <div class="container">
-  <%= simple_form_for [@session, @review] do |f| %>
-    <%= f.input :description %>
-    <p>Rating</p>
-    <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-    <%= b.radio_button + b.label {''} %>
+  <% if user_signed_in? %>
+    <%= simple_form_for [@session, @review] do |f| %>
+      <%= f.input :description %>
+      <p>Rating</p>
+      <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+      <%= b.radio_button + b.label {''} %>
+      <% end %>
+      <%= f.submit %>
     <% end %>
-    <%= f.submit %>
   <% end %>
 </div>
 
