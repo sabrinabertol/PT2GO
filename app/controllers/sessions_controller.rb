@@ -3,7 +3,14 @@ class SessionsController < ApplicationController
 
   def index
     @sessions = Session.all.order(created_at: :asc)
-
+    @markers = @sessions.geocoded.map do |session|
+      {
+        lat: session.latitude,
+        lng: session.longitude,
+        infoWindow:render_to_string(partial: "info_window", locals: { session: session }),
+        image_url: helpers.asset_url('bg.jpg')
+      }
+    end
 
   end
 
