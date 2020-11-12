@@ -25,6 +25,7 @@
 
 </div>
 
+
 <div class="row justify-content-center">
   <div class="col-6 m-5">
     <p><strong>Who's attending?</strong></p>
@@ -55,5 +56,15 @@
    </div>
   </div>
 
-
+ 
 </div>
+ <div id="map"
+   style="width: 600px; height: 600px;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+</div>
+
+
+
+
