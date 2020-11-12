@@ -6,7 +6,7 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("bg.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("https://images.unsplash.com/photo-1580058572462-98e2c0e0e2f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -14,7 +14,6 @@
 }
 .masthead h1 {
   font-family:'Bebas Neue', cursive;
-  font-weight: bold;
   font-size: 2.5rem;
   line-height: 2.5rem;
   background: rgb(0, 166, 87);
@@ -47,4 +46,39 @@
     max-width: 30rem;
     font-size: 1.25rem;
   }
+}
+
+
+
+
+.projects-section {
+  padding: 10rem 0;
+  background-color: black;
+}
+.projects-section .featured-text {
+  padding: 2rem;
+}
+@media (min-width: 992px) {
+  .projects-section .featured-text {
+    padding: 0 0 0 2rem;
+    border-left: 0.5rem solid #00a657;
+  }
+}
+.projects-section .project-text {
+  padding: 3rem;
+  font-size: 90%;
+}
+@media (min-width: 992px) {
+  .projects-section .project-text {
+    padding: 5rem;
+  }
+  .projects-section .project-text hr {
+    border-color: #00a657;
+    border-width: 0.25rem;
+    width: 30%;
+  }
+}
+
+#projects {
+  background-color: black;
 }

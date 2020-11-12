@@ -1,12 +1,49 @@
-<h1>Olá from show!</h1>
+
+<div class="container">
+  <div class="text-center m-5">
+    <h1><%= @session.name %></h1>
+  </div>
 
 
-<%= render 'bookings/new' %>
-<%= render 'reviews/new' %>
+  <section class="projects-section bg-light" id="projects">
+   <div class="row justify-content-center no-gutters">
+     <div class="col-lg-6"><img class="img-fluid" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" /></div>
+     <div class="col-lg-6 order-lg-first">
+       <div class="bg-black text-center h-100 project">
+         <div class="d-flex h-100">
+           <div class="project-text w-100 my-auto text-center text-lg-right">
+             <h3><%= @session.name %></h3>
+             <p><%= @session.location %> - <%= @session.date %></p>
+             <p><%= @session.description %></p>
+             <%= render 'bookings/new' %>
+             <hr class="d-none d-lg-block mb-0 mr-0">
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+ <div class="row">
+  <div class="col-3">
+
+  </div>
+  <div class="col-6 ">
+   <div class="m-5">
+    <p class="text-center"> <strong>Have you been to this class before? Leave a review!</strong></p>
+    <%= render 'reviews/new' %>
+  </div>
+  <div class="mt-5 text-center">
+   <%= link_to sessions_path do %>
+   Back to list
+   <% end %>
+ </div>
+ <div class="col-3">
+
+ </div>
+
+</div>
+</div>
 
 
-<div>
-  <%= link_to sessions_path do %>
-    &larr; Back to list
-  <% end %>
 </div>
