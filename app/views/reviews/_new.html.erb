@@ -1,6 +1,7 @@
 
-<div class="container">
+
   <% if user_signed_in? %>
+    <p> <strong>Have you been to this class before? Leave a review!</strong></p>
     <%= simple_form_for [@session, @review] do |f| %>
       <%= f.input :description %>
       <p>Rating</p>
@@ -9,6 +10,7 @@
       <% end %>
       <%= f.submit %>
     <% end %>
+  <% else %>
+    <p> <strong>You must be logged in to leave a review</strong></p>
   <% end %>
-</div>
 
