@@ -8,12 +8,16 @@ before_action :set_session
   def create
     @review = Review.new(review_params)
     @review.session = @session
-    @review.user_id = current_user
+    @review.user = current_user
     if @review.save
       redirect_to session_path(@session), notice: 'Your review was created!'
     else
-      render :new
+      render '_new'
     end
+  end
+
+  def show
+
   end
 
   private
@@ -25,5 +29,4 @@ before_action :set_session
   def set_session
     @session = Session.find(params[:session_id])
   end
-
 end

@@ -1,17 +1,15 @@
-
-
+<div class="background-card">
   <% if user_signed_in? %>
     <p> <strong>Have you been to this class before? Leave a review!</strong></p>
     <%= simple_form_for [@session, @review] do |f| %>
       <%= f.input :description %>
       <p>Rating</p>
-      <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-      <%= b.radio_button + b.label {''} %>
-      <% end %>
+      <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
       <%= f.submit %>
     <% end %>
   <% else %>
     <p> <strong>You must be logged in to leave a review</strong></p>
   <% end %>
+</div>
 
 
