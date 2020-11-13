@@ -1,15 +1,14 @@
 
-<div class="background-card">
+<div class="background-card-reviews">
   <% if user_signed_in? %>
     <p><strong>Have you been to this class before? Leave a review!</strong></p>
     <%= simple_form_for [@session, @review] do |f| %>
       <%= f.input :description %>
       <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
       <%= f.submit %>
+      <% end %>
 
-    <% else %>
-      <p> <strong>You must be logged in to leave a review</strong></p>
-
+  <% else %>
+    <button type="button" class="btn btn-outline-success mt-3">Log in to leave a review!</button>
     <% end %>
   </div>
-   

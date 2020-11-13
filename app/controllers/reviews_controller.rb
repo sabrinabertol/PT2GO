@@ -16,10 +16,6 @@ before_action :set_session
     end
   end
 
-  def show
-
-  end
-
   private
 
   def review_params
