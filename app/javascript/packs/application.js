@@ -30,10 +30,15 @@ import 'mapbox-gl/dist/mapbox-gl';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initMapbox2 } from '../plugins/init_mapbox2';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
+window.onload = (event) => { initMapbox()};
+window.onload = (event) => { initAutocomplete()};
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initMapbox2();
   initAutocomplete();
+  console.log("ola");
 })
