@@ -6,20 +6,17 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.session = @session
+    @review.user_id = current_user
     if @review.save
-      redirect_to session_path(@session), notice: 'Your review was added'
+      redirect_to session_path(@session), notice: 'Your booking was created!'
     else
       render :new
     end
   end
+  private
 
-  # delete /doses/:id
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-
-    redirect_to session_path(@review.session), alert: 'Review deleted!'
+   def review_params
+    params.require(:review).permit(:session_id, :rating, :description, :user_id)
   end
 
 end

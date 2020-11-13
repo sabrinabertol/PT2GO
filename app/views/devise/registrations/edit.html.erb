@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="row justify-content-center"> 
+  <div class="row justify-content-center">
     <div class="col-6">
 
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -18,6 +18,9 @@
                       hint:"leave it blank if you don't want to change it",
                       required: false,
                       input_html: {autocomplete: "Do You wanto to change your name?"} %>
+          <%= f.input :photo, as: :file,
+                      required: false,
+                      input_html: {autocomplete: "add a picture"} %>
           <%= f.input :phone,
                       hint:"leave it blank if you don't want to change it",
                       required: false,
@@ -59,7 +62,7 @@
       </div>
         <%= link_to "Back", :back %>
 
-    </div>    
+    </div>
   </div>
 </div>
-  
+
