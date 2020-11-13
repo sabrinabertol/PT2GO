@@ -41,5 +41,4 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initMapbox2();
   initAutocomplete();
-  console.log("ola");
 })
