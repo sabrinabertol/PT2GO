@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
         image_url: helpers.asset_url('bg.jpg')
       }
     end
-
   end
 
   def show
@@ -20,8 +19,6 @@ class SessionsController < ApplicationController
     @booking = Booking.new
 
     @attending = @session.users
-
-
     @markers =
       [{
         lat: @session.latitude,
