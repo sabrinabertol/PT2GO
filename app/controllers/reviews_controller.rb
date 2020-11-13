@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+before_action :set_session
 
   def new
     @review = Review.new
@@ -6,17 +7,23 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.session = @session
     @review.user_id = current_user
     if @review.save
-      redirect_to session_path(@session), notice: 'Your booking was created!'
+      redirect_to session_path(@session), notice: 'Your review was created!'
     else
       render :new
     end
   end
+
   private
 
-   def review_params
-    params.require(:review).permit(:session_id, :rating, :description, :user_id)
+  def review_params
+    params.require(:review).permit(:rating, :description)
+  end
+
+  def set_session
+    @session = Session.find(params[:session_id])
   end
 
 end
