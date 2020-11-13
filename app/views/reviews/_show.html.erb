@@ -1,12 +1,15 @@
 <div class="container">
-    <% @session.reviews.each do |review| %>
-      <div class="media m-5">
-        <%= cl_image_tag review.user.photo.key, :class => "avatar" %>
-          <div class="media-body">
-            <h5 class="mt-0"><%= review.user.name  %></h5>
-            <%= review.description %>
-            <%= review.rating %>
-          </div>
+  <% @session.reviews.each do |review| %>
+  <div class="card m-3">
+  <div class="card-body">
+    <div class="media">
+      <%= cl_image_tag review.user.photo.key, :class => "avatar" %>
+      <div class="media-body m-2">
+        <h5 class="mt-0"><%= review.user.name %></h5>
+             <%= review.description %> <span class="badge badge-success"><%= review.rating %></span>
       </div>
-    <% end %>
+    </div>
+      </div>
+</div>
+  <% end %>
 </div>
