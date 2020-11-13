@@ -18,12 +18,14 @@
         <%= render 'bookings/new' %>
       </div>
       <% else  %>
-      <p>Sign in to save your spot!</p>
+        <%= link_to new_user_session_path do %>
+          <button type="button" class="btn btn-outline-success mt-3">Sign in to save your spot!</button>
+        <% end %>
       <% end %>
     </div>
   </div>
-  <div id="map"
-   style="width: 800px; height: 400px;"
+  <div id="map" class="mt-5 card-product"
+   style="width: 800px; height: 400px; border-radius: 10;"
    data-markers="<%= @markers.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
@@ -34,15 +36,18 @@
 <div class="row justify-content-center">
   <div class="col-6 m-5">
     <p><strong>Who's attending?</strong></p>
-      <div class="d-flex space-around">
+      <div class="d-flex">
         <% @attending.each do |user| %>
             <% if user.photo.attached?  %>
-              <%= cl_image_tag user.photo.key, :class => "avatar" %>
+              <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
+                <%= cl_image_tag user.photo.key, :class => "avatar" %>
+
+              </div>
             <% else  %>
-              <%= cl_image_tag "logo-avatar2-02_kqleye.jpg", :class => "avatar" %>
-              <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                <%= user.name  %>
-              </button>
+              <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
+                <%= cl_image_tag "logo-avatar2-02_kqleye.jpg", :class => "avatar" %>
+
+              </div>
             <% end  %>
         <% end %>
       </div>

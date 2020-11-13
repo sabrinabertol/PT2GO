@@ -12,8 +12,12 @@ before_action :set_session
     if @review.save
       redirect_to session_path(@session), notice: 'Your review was created!'
     else
-      render :new
+      render 'sessions/show'
     end
+  end
+
+  def show
+
   end
 
   private
