@@ -30,11 +30,16 @@ import 'controllers';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initMapbox2 } from '../plugins/init_mapbox2';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import 'tippy.js/dist/tippy.css'; // optional for styling
 
+window.onload = (event) => { initMapbox()};
+window.onload = (event) => { initAutocomplete()};
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initMapbox2();
   initAutocomplete();
+  console.log("ola");
 })

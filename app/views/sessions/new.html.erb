@@ -26,5 +26,25 @@
 </div>
 
 
-
+<script>
+  // setTimeout(function () {
+  //       location.reload()
+  //       return;
+  //   }, 100);
+   function reloadPage() {
+  // The last "domLoading" Time //
+  var currentDocumentTimestamp =
+  new Date(performance.timing.domLoading).getTime();
+  // Current Time //
+  var now = Date.now();
+  // Ten Seconds //
+  var tenSec = 1000;
+  // Plus Ten Seconds //
+  var plusTenSec = currentDocumentTimestamp + tenSec;
+  if (now > plusTenSec) {
+  location.reload();
+  } else {}
+  }
+  reloadPage();
+  </script>
 
