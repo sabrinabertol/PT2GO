@@ -1,5 +1,4 @@
-
-
+<div class="background-card">
   <% if user_signed_in? %>
     <p> <strong>Have you been to this class before? Leave a review!</strong></p>
     <%= simple_form_for [@session, @review] do |f| %>
@@ -11,5 +10,6 @@
   <% else %>
     <p> <strong>You must be logged in to leave a review</strong></p>
   <% end %>
+</div>
 
 
