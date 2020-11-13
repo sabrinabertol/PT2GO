@@ -1,45 +1,51 @@
 <div class="container">
+<div class="text-center m-5">
+  <h1>🏋🏻‍♂️Here are our Classes!  💪🏻🤸🏻‍♀️</h1>
+</div>
+</div>
 
-
-  <h1 class="text-center m-5"> 🏋🏻‍♂️ Here are our Classes! 💪🏻🤸🏻‍♀️ </h1>
-
-
-
+<div class="container">
+<div class="text-center m-1">
   <% if !current_user.nil? && current_user.pt %>
     <%= link_to new_session_path do %>
 
       <button type="button" class="btn btn-success center">Add your class!</button>
     <% end %>
   <% end %>
+</div>
+</div>
 
 
-    <div class="d-flex justify-content-center flex-column p-3" >
-         <% @sessions.each do |session| %>
-         <%= link_to "", session_path(session), class: 'card-link' %>
-          <div class="flip card_body">
+<div class="container">
+<div class="text-center">
+    <% @sessions.each do |session| %>
+      <%= link_to session_path(session) do %>
+        <div class="flip">
             <% if session.photo.attached? %>
-              <div class="front" style="background-image: url('<%= cl_image_path session.photo.key %>')">
-                <h1 class="text-shadow"><%= session.name %></h1>
-              </div>
-           <% else %>
-             <div class="front" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dyndl1bic/image/upload/v1605194054/full-logo-03_qj0t4l.jpg)">
-                <h1 class="text-shadow"><%= session.name %></h1>
-             </div>
-           <% end %>
-           <div class="back">
-             <p><%= session.location %></p>
-             <p><%= session.date %></p>
-             <p><%= session.description %></p>
+              <div class="front" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path session.photo.key %>')">
+            <% else %>
+              <div class="front" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://res.cloudinary.com/dyndl1bic/image/upload/v1605194054/full-logo-03_qj0t4l.jpg)">
+            <% end %>
+               <h1 class="text-shadow"><%= session.name %></hi>
+            </div>
+            <div class="back">
+                <p><%= session.location %></p>
+                <p><%= session.date %></p>
+                <p><%= session.description %></p>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+</div>
 
-          </div>
-        <% end %>
-    </div>
-
-
+<div class="container">
+<div class="text-center m-5">
   <div id="map"
-   style="width: 100%; height: 600px;"
+   style="width: 100%; height: 300px;"
    data-markers="<%= @markers.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>
+</div>
+
