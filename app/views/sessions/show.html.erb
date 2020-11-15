@@ -1,72 +1,67 @@
 
 <div class="container">
-
-<div class="row justify-content-center mt-5">
-
-  <div class="card-product">
-    <% if @session.photo.attached?%>
-      <%= cl_image_tag @session.photo.key%>
-    <% else %>
-      <%= cl_image_tag "https://res.cloudinary.com/dyndl1bic/image/upload/v1605194054/full-logo-03_qj0t4l.jpg" %>
-    <% end %>
-    <div class="card-product-infos ml-3">
-      <h3><%= @session.name %></h3>
-      <p style="font-size: 16px;"><%= @session.location %> - <%= @session.date %></p>
-      <p><%= @session.description %></p>
-      <% if user_signed_in? %>
-      <div class="mt-5">
-        <%= render 'bookings/new' %>
-      </div>
-      <% else  %>
-        <%= link_to new_user_session_path do %>
-          <button type="button" class="btn btn-outline-success mt-3">Sign in to save your spot!</button>
-        <% end %>
+  <div class="row justify-content-center mt-5">
+    <div class="card-product">
+      <% if @session.photo.attached?%>
+        <%= cl_image_tag @session.photo.key%>
+      <% else %>
+        <%= cl_image_tag "https://res.cloudinary.com/dyndl1bic/image/upload/v1605194054/full-logo-03_qj0t4l.jpg" %>
       <% end %>
+      <div class="card-product-infos ml-3">
+        <h3><%= @session.name %></h3>
+        <h1 style="font-size: 16px;"><%= @session.location %> - <%= @session.date %></h1>
+        <p><%= @session.description %></p>
+        <% if user_signed_in? %>
+          <div class="mt-5"><%= render 'bookings/new' %></div>
+        <% else  %>
+          <%= link_to new_user_session_path do %>
+            <button type="button" class="btn btn-outline-success mt-3">Log in to save your spot!</button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div id="map" class="card-product mt-5"
+    style="width: 800px; height: 400px; border-radius: 10;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="card mt-5" style="width: 800px;">
+    <div class="card-body">
+      <p><strong>Who's attending?</strong></p>
+        <div class="d-flex">
+          <% @attending.each do |user| %>
+              <% if user.photo.attached?  %>
+                <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
+                  <%= cl_image_tag user.photo.key, :class => "avatar" %>
+                </div>
+              <% else  %>
+                <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
+                  <%= cl_image_tag "logo-avatar2-02_kqleye.jpg", :class => "avatar" %>
+
+                </div>
+              <% end  %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  </div>
+  <div class="row justify-content-center">
+
+    <div class="mt-5">
+      <%= render 'reviews/new' %>
+    </div>
+
+    <div class="mt-5">
+      <%= render 'reviews/show' %>
     </div>
   </div>
 
-  <div id="map" class="card-product mt-5"
-   style="width: 800px; height: 400px; border-radius: 10;"
-   data-markers="<%= @markers.to_json %>"
-   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="text-center m-5">
+    <%= link_to sessions_path do %>Back to list<% end %>
   </div>
 
-</div>
-
-<div class="row justify-content-center">
-  <div class="card mt-5 mb-5" style="width: 800px;">
-  <div class="card-body">
-    <p><strong>Who's attending?</strong></p>
-      <div class="d-flex">
-        <% @attending.each do |user| %>
-            <% if user.photo.attached?  %>
-              <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
-                <%= cl_image_tag user.photo.key, :class => "avatar" %>
-
-              </div>
-            <% else  %>
-              <div class="mr-3" data-controller="tippy" data-tippy-content="<%= user.name %>">
-                <%= cl_image_tag "logo-avatar2-02_kqleye.jpg", :class => "avatar" %>
-
-              </div>
-            <% end  %>
-        <% end %>
-      </div>
-  </div>
-</div>
-</div>
-
-
-  <div class="row justify-content-center">
-
-        <%= render 'reviews/new' %>
-        <%= render 'reviews/show' %>
-     <div class="text-center m-5">
-       <%= link_to sessions_path do %>
-       Back to list
-       <% end %>
-     </div>
-   </div>
 </div>
 
 
